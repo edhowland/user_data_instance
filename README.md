@@ -14,3 +14,10 @@ User data is for passing metadata or runtime init scripts to instance creation i
 3. Create init script to add to user/.ssh
 4. Create user data multipart file
 5. Make init script to git clone this repo from GitHub
+
+
+## Installation
+
+```
+  $ sudo apt-get install cloud-init
+```n
