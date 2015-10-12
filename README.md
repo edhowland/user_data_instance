@@ -19,5 +19,5 @@ User data is for passing metadata or runtime init scripts to instance creation i
 ## Installation
 
 ```
-  $ sudo apt-get install cloud-init
+  $ sudo apt-get install cloud-init cloud-utils
 ```n
