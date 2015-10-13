@@ -11,6 +11,13 @@ def die message, usage=''
   exit 1
 end
 
+# output contents of hash (read from JSON file)
+def print_hash a_hash
+  a_hash.each_pair do |k,v|
+    puts "#{k}: #{v.to_s}"
+  end
+end
+
 options = {}
 parser = OptionParser.new do |opt|
   opt.banner = 'Modify input JSON replacing key with new value'
@@ -43,5 +50,7 @@ die 'Missing output.json filename', parser unless options[:output]
 
 
 json = JSON.parse(File.read(options[:json]))
+
+print_hash json if options[:verbose]
 
 File.write(options[:output], json.to_json)
