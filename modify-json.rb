@@ -31,6 +31,15 @@ parser = OptionParser.new do |opt|
     options[:output] = file
   end
   opt.separator ''
+
+  opt.on('-k key', '--key key', String, 'Key to replace') do |key|
+    options[:key] = key
+  end
+
+  opt.on('-v value', '--value value', String, 'Value to replace') do |value|
+    options[:value] = value
+  end
+  opt.separator ''
   opt.on('--verbose', 'Verbose output of before and after JSON contents') do
     options[:verbose] = true
   end
@@ -46,6 +55,9 @@ parser.parse!
 
 die 'Missing input JSON file', parser unless options[:json]
 die 'Missing output.json filename', parser unless options[:output]
+if options[:key] or options[:value]
+  die 'Must supply both key and value' unless (options[:key] and options[:value])
+end
 
 
 
