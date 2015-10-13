@@ -52,6 +52,18 @@ $ ls
 data.mp
 first-time.sh
 git.rsa
+```
+
+
+## Embedding MIME multipart in JSON file for curl 
+
+After you have a created a MIME multipart file (E.g. scripts/data.mp in this case),
+you can embed it in a .json file:
 
 ```
+  $ ./embed-mime-json.rb -j input.json -m scriptes/data.mp -o output.json
+```
+
+
+
 
