@@ -4,8 +4,10 @@
 require 'optparse'
 require 'json'
 
-def die message
+def die message, usage=''
   puts message
+  puts
+  puts usage.to_s
   exit 1
 end
 
@@ -35,7 +37,7 @@ end
 
 parser.parse!
 
-die 'Missing input JSON file' unless options[:json]
+die 'Missing input JSON file', parser unless options[:json]
 die 'Missing MIME multipart input file' unless options[:mime]
 die 'Missing output.json filename' unless options[:output]
 
