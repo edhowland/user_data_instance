@@ -97,4 +97,9 @@ backups: false
 user_data: 
 ipv6: false
 private_networking: true
+
+
+$ jq .size input.json ; jq .size output.json 
+"512mb"
+"256mb"
 ```
