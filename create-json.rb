@@ -31,3 +31,11 @@ end
 parser.parse!
 
 p options
+
+json = JSON.parse(File.read(options[:json]))
+mime = File.read(options[:mime])
+
+
+json['user_data'] = mime
+
+File.write(options[:output], json.to_json)
