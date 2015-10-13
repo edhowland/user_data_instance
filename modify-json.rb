@@ -55,13 +55,14 @@ parser.parse!
 
 die 'Missing input JSON file', parser unless options[:json]
 die 'Missing output.json filename', parser unless options[:output]
-if options[:key] or options[:value]
-  die 'Must supply both key and value' unless (options[:key] and options[:value])
-end
-
-
 
 json = JSON.parse(File.read(options[:json]))
+print_hash json if options[:verbose]
+
+if options[:key] or options[:value]
+  die 'Must supply both key and value' unless (options[:key] and options[:value])
+  json[options[:key]] = options[:value]
+end
 
 print_hash json if options[:verbose]
 
