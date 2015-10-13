@@ -4,6 +4,11 @@
 require 'optparse'
 require 'json'
 
+def die message
+  puts message
+  exit 1
+end
+
 options = {}
 parser = OptionParser.new do |opt|
   opt.banner = 'create-json embeds MIME multipart file in user_data field in input JSON'
@@ -30,7 +35,11 @@ end
 
 parser.parse!
 
-p options
+die 'Missing input JSON file' unless options[:json]
+die 'Missing MIME multipart input file' unless options[:mime]
+die 'Missing output.json filename' unless options[:output]
+
+
 
 json = JSON.parse(File.read(options[:json]))
 mime = File.read(options[:mime])
