@@ -38,8 +38,8 @@ end
 parser.parse!
 
 die 'Missing input JSON file', parser unless options[:json]
-die 'Missing MIME multipart input file' unless options[:mime]
-die 'Missing output.json filename' unless options[:output]
+die 'Missing MIME multipart input file', parser unless options[:mime]
+die 'Missing output.json filename', parser unless options[:output]
 
 
 
