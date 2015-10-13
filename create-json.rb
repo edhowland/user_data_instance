@@ -5,6 +5,12 @@ require 'optparse'
 require 'json'
 
 parser = OptionParser.new do |opt|
+  opt.banner = 'create-json embeds MIME multipart file in user_data field in input JSON'
+  opt.separator ''
+  opt.on('-h', '--help', 'Display this help') do
+    puts opt
+    exit
+  end
 
 end
 
