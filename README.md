@@ -67,3 +67,34 @@ you can embed it in a .json file:
 
 
 
+
+
+## Modify any key in a JSON file
+
+You can modify any key in a .json file with the 'modify-json.rb'.
+It takes a input file, output file and a single key value pair.
+You can use it inspect all the keys in the input file with --verbose option.
+
+```
+./modify-json.rb  -j input.json  -o output.json -k size -v 256mb --verbose
+Before change
+size: 512mb
+name: ed-userdata
+image: ubuntu-14-04-x64
+region: sfo1
+ssh_keys: 
+backups: false
+user_data: 
+ipv6: false
+private_networking: true
+After change
+size: 256mb
+name: ed-userdata
+image: ubuntu-14-04-x64
+region: sfo1
+ssh_keys: 
+backups: false
+user_data: 
+ipv6: false
+private_networking: true
+```

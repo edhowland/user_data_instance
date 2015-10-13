@@ -12,7 +12,8 @@ def die message, usage=''
 end
 
 # output contents of hash (read from JSON file)
-def print_hash a_hash
+def print_hash a_hash, preamble=''
+  puts preamble unless preamble.empty?
   a_hash.each_pair do |k,v|
     puts "#{k}: #{v.to_s}"
   end
@@ -57,13 +58,13 @@ die 'Missing input JSON file', parser unless options[:json]
 die 'Missing output.json filename', parser unless options[:output]
 
 json = JSON.parse(File.read(options[:json]))
-print_hash json if options[:verbose]
+print_hash json, 'Before change'  if options[:verbose]
 
 if options[:key] or options[:value]
   die 'Must supply both key and value' unless (options[:key] and options[:value])
   json[options[:key]] = options[:value]
 end
 
-print_hash json if options[:verbose]
+print_hash json, 'After change' if options[:verbose]
 
 File.write(options[:output], json.to_json)
