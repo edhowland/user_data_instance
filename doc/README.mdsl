@@ -50,7 +50,7 @@ $ ls
 data.mp
 first-time.sh
 git.rsa
-```}
+}
 
 h2 'Embedding MIME multipart in JSON file for curl '
 
