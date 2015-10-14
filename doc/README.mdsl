@@ -1,36 +1,34 @@
-# user_data_instance
+h1 'user_data_instance'
+para %q{User data is for passing metadata or runtime init scripts to instance creation in cloud services like AWS or Digital Ocean.}
 
-User data is for passing metadata or runtime init scripts to instance creation in cloud services like AWS or Digital Ocean.
 
-## TODO
+h2 'TODO'
 
-1. Create SSH keys
-2. Add to Github (publicey)
-3. Create init script to add to user/.ssh
-4. Create user data multipart file
-5. Make init script to git clone this repo from GitHub
+numbers 'Create SSH keys',
+'Add to Github (publicey)',
+'Create init script to add to user/.ssh',
+'Create user data multipart file',
+'Make init script to git clone this repo from GitHub'
 
-## Installation
 
-```
+h2 'Installation'
 
+code %q{
   $ sudo apt-get install cloud-init cloud-utils
+}
 
-```
 
-## Create User Data multipart file
+h2 'Create User Data multipart file'
 
-After creating your script to be run one time after instance creation,
+para %q{After creating your script to be run one time after instance creation,
 and copying your private key to be used for git clone,
 you wil need to combine them in a MIME Multipart file. The program to do this is
 'write-mime-multipart' supplied in the 'cloud-utils' package in Ubuntu
 you installed above.
+}
+para %q{Here is how to run this:}
 
-
-Here is how to run this:
-
-```
-
+code %q{
 
 $ cd scripts/
 $ ls
@@ -52,28 +50,24 @@ $ ls
 data.mp
 first-time.sh
 git.rsa
+}
 
-```
+h2 'Embedding MIME multipart in JSON file for curl '
 
-## Embedding MIME multipart in JSON file for curl 
+para %q{After you have a created a MIME multipart file (E.g. scripts/data.mp in this case),
+you can embed it in a .json file:}
 
-After you have a created a MIME multipart file (E.g. scripts/data.mp in this case),
-you can embed it in a .json file:
-
-```
-
+code %q{
   $ ./embed-mime-json.rb -j input.json -m scriptes/data.mp -o output.json
+}
 
-```
+h2 'Modify any key in a JSON file'
 
-## Modify any key in a JSON file
-
-You can modify any key in a .json file with the 'modify-json.rb'.
+para %q{You can modify any key in a .json file with the 'modify-json.rb'.
 It takes a input file, output file and a single key value pair.
-You can use it to  inspect all the keys in the input file with --verbose option.
+You can use it to  inspect all the keys in the input file with --verbose option.}
 
-```
-
+code %q{
 ./modify-json.rb  -j input.json  -o output.json -k size -v 256mb --verbose
 Before change
 size: 512mb
@@ -100,6 +94,4 @@ private_networking: true
 $ jq .size input.json ; jq .size output.json 
 "512mb"
 "256mb"
-
-```
-
+}

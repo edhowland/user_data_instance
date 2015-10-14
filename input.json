@@ -1,0 +1,1 @@
+{ "size": "512mb", "name": "ed-userdata", "image": "ubuntu-14-04-x64", "region": "sfo1", "ssh_keys": null, "backups": false, "user_data": null, "ipv6": false, "private_networking": true }
