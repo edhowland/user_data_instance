@@ -1,0 +1,7 @@
+#!/bin/bash
+curl -X POST "https://api.digitalocean.com/v2/droplets" \
+      -d'{"name":"metadata.example.com","region":"nyc3","size":"512mb","private_networking":true,"image":"ubuntu-14-04-x64","user_data":
+"'"$(cat ~/user-data.yml )"'",
+      "ssh_keys":[ <SSH KEY IDs> ]}' \
+      -H "Authorization: Bearer $TOKEN" \
+      -H "Content-Type: application/json" 
