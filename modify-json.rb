@@ -55,7 +55,7 @@ end
 parser.parse!
 
 die 'Missing input JSON file', parser unless options[:json]
-die 'Missing output.json filename', parser unless options[:output]
+#die 'Missing output.json filename', parser unless options[:output]
 
 json = JSON.parse(File.read(options[:json]))
 print_hash json, 'Before change'  if options[:verbose]
@@ -65,6 +65,9 @@ if options[:key] or options[:value]
   json[options[:key]] = options[:value]
 end
 
-print_hash json, 'After change' if options[:verbose]
 
-File.write(options[:output], json.to_json)
+if options[:output]
+  print_hash json, 'After change' if options[:verbose]
+
+  File.write(options[:output], json.to_json)
+end
